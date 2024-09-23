@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id "org.springframework.boot" version "2.6.9"
+    id "io.spring.dependency-management" version "1.1.0"
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/milestone" }
+    maven { url "https://repo.spring.io/snapshot" }
+}
+
+dependencies {
+    // JUnit for testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // Spring Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // Spring Web (includes Servlet API)
+    implementation "org.springframework.boot:spring-boot-starter-web"
+
+    // JJWT for JSON Web Tokens
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    // Swagger
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
+
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    // PostgreSQL Driver (optional, if you are using PostgreSQL)
+    runtimeOnly 'org.postgresql:postgresql'
+
+    implementation "org.hibernate:hibernate-core"
+}
+
+test {
+    useJUnitPlatform()
+}
